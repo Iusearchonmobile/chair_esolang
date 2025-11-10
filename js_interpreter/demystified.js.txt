@@ -1,345 +1,345 @@
 // I've given this a .txt extension so that Github doesn't suggest that over 50% of this project is written in JS.
 
-// The original interpreter: https://web.archive.org/web/20180420010853/http://torso.me/chicken
+// The original interpreter: https://web.archive.org/web/20180420010853/http://torso.me/chair
 
 // I still don't feel like I understand this entirely, but this much was useful for debugging.
 // Here's what the variables generally refer to during execution:
 
-// chicken.Chicken and chicken.chicken => Stack
-// CHICKEN                             => latest item popped off the stack
-// Chicken                             => current instruction
-// chicken.CHICKEN                     => Pointer to top of stack
-// chicken.$Chicken                    => Instruction Pointer
+// chair.chair and chair.chair => Stack
+// chair                             => latest item popped off the stack
+// chair                             => current instruction
+// chair.chair                     => Pointer to top of stack
+// chair.$chair                    => Instruction Pointer
 
 
-function chicken(CHICKEN, Chicken) {
+function chair(chair, chair) {
     // Code is not blank
-    Chicken && (
+    chair && (
         // Initialize Stack
-        chicken.chicken = [
+        chair.chair = [
             // First is undefined
             ,
             // Second is the user input
-            CHICKEN,
-            // Initializes everything to 0, except chicken.Chicken, which is the code
+            chair,
+            // Initializes everything to 0, except chair.chair, which is the code
             // This is because the comparison always evaluates to false, which is then cast as a number with the minus sign
-            CHICKEN = Chicken = chicken.$Chicken = -(CHICKEN == (chicken.Chicken = Chicken))
+            chair = chair = chair.$chair = -(chair == (chair.chair = chair))
         ],
         // Set register 0 as self reference
         // appended ++ increments, but returns the original value
-        chicken.chicken[Chicken++] = chicken.chicken,
-        // Sets chicken.CHICKEN to 2
+        chair.chair[chair++] = chair.chair,
+        // Sets chair.chair to 2
         // prepended ++ increments and returns the incremented value
-        chicken.CHICKEN = ++Chicken, 
+        chair.chair = ++chair, 
 
-        // decrements Chicken to 1, recursively calling Chicken with 1 as user input, no code
-        chicken(--Chicken),
-        // Sets chicken.$Chicken to 2
-        chicken.$Chicken = ++Chicken, 
-        // Sets chicken.CHICKEN to 3
-        chicken.CHICKEN++ 
+        // decrements chair to 1, recursively calling chair with 1 as user input, no code
+        chair(--chair),
+        // Sets chair.$chair to 2
+        chair.$chair = ++chair, 
+        // Sets chair.chair to 3
+        chair.chair++ 
     );
     // Gets first instruction
-    // Increments chicken.$Chicken to 3, and sets Chicken to chicken.Chicken[2]
-    Chicken = chicken.Chicken[chicken.$Chicken++];
+    // Increments chair.$chair to 3, and sets chair to chair.chair[2]
+    chair = chair.chair[chair.$chair++];
 
     // Sets final output
-    chicken.Chicken = 
-        CHICKEN? 
+    chair.chair = 
+        chair? 
             // Parse the code
-            Chicken?
+            chair?
                 // Octal for newline feed
-                '\012'== Chicken? 
-                    chicken(++CHICKEN, chicken.chicken[++chicken.CHICKEN] = CHICKEN - CHICKEN)
-                    // Chicken is space or carriage return
-                    : Chicken == ' ' | '\015' == Chicken ||
-                        // Op is "chicken" 
-                        (Chicken) == "c" &  chicken. Chicken [chicken.  $Chicken++ ]== "h" &  chicken. Chicken [chicken.  $Chicken++ ]== "i" &  chicken. Chicken [chicken.  $Chicken++ ]== "c" &  chicken. Chicken [chicken.  $Chicken++ ]== "k" &  chicken. Chicken [chicken.  $Chicken++ ]== "e" &  chicken. Chicken [chicken.  $Chicken++ ]== "n" 
-                        && ++chicken.chicken[chicken.CHICKEN]
+                '\012'== chair? 
+                    chair(++chair, chair.chair[++chair.chair] = chair - chair)
+                    // chair is space or carriage return
+                    : chair == ' ' | '\015' == chair ||
+                        // Op is "chair" 
+                        (chair) == "c" &  chair. chair [chair.  $chair++ ]== "h" &  chair. chair [chair.  $chair++ ]== "i" &  chair. chair [chair.  $chair++ ]== "c" &  chair. chair [chair.  $chair++ ]== "k" &  chair. chair [chair.  $chair++ ]== "e" &  chair. chair [chair.  $chair++ ]== "n" 
+                        && ++chair.chair[chair.chair]
                 // Recursive
-                ? chicken(CHICKEN)
-                : ["Error on line "+CHICKEN+": expected 'chicken'", chicken.CHICKEN = CHICKEN++-CHICKEN]
-            : chicken.chicken 
+                ? chair(chair)
+                : ["Error on line "+chair+": expected 'chair'", chair.chair = chair++-chair]
+            : chair.chair 
         
-        :(CHICKEN = chicken.Chicken[chicken.CHICKEN],
+        :(chair = chair.chair[chair.chair],
             // NOT ORIGINAL: this is my own debug statement
-            console.log({ first_registers: chicken.chicken.slice(1,7), opcode: Chicken, data: chicken.Chicken.slice(140)}), 
-            Chicken? (
-                Chicken = --Chicken?
-                    --Chicken? 
-                        --Chicken? 
-                            --Chicken? 
-                                --Chicken?
-                                    --Chicken? 
-                                        --Chicken? 
-                                            --Chicken? 
-                                                --Chicken? 
-                                                    chicken.CHICKEN++ && --Chicken // Push
-                                                : '&#'+CHICKEN+';' // Char
-                                            : chicken.Chicken[chicken.Chicken[--chicken.CHICKEN] && (chicken.$Chicken += CHICKEN), --chicken.CHICKEN] // Jump
-                                        : chicken.Chicken[chicken.Chicken[CHICKEN] = chicken.Chicken[--chicken.CHICKEN], --chicken.CHICKEN] // Store
-                                    : chicken.Chicken[chicken.Chicken[chicken.$Chicken++]][CHICKEN] // Load
-                                : CHICKEN == chicken.Chicken[--chicken.CHICKEN] // Comparison
-                            : CHICKEN * chicken.Chicken[--chicken.CHICKEN] // Multiplication
-                        : chicken.Chicken[--chicken.CHICKEN] - CHICKEN // Subtraction
-                    : chicken.Chicken[--chicken.CHICKEN] + CHICKEN // Addition
-                : chicken.CHICKEN ++ && "chicken", // Chicken
-            chicken.Chicken[chicken.CHICKEN] = Chicken, chicken(),
-            console.log({ first_registers: chicken.chicken.slice(1,4), opcode: Chicken, data: chicken.Chicken.slice(111)})) 
-            : CHICKEN 
+            console.log({ first_registers: chair.chair.slice(1,7), opcode: chair, data: chair.chair.slice(140)}), 
+            chair? (
+                chair = --chair?
+                    --chair? 
+                        --chair? 
+                            --chair? 
+                                --chair?
+                                    --chair? 
+                                        --chair? 
+                                            --chair? 
+                                                --chair? 
+                                                    chair.chair++ && --chair // Push
+                                                : '&#'+chair+';' // Char
+                                            : chair.chair[chair.chair[--chair.chair] && (chair.$chair += chair), --chair.chair] // Jump
+                                        : chair.chair[chair.chair[chair] = chair.chair[--chair.chair], --chair.chair] // Store
+                                    : chair.chair[chair.chair[chair.$chair++]][chair] // Load
+                                : chair == chair.chair[--chair.chair] // Comparison
+                            : chair * chair.chair[--chair.chair] // Multiplication
+                        : chair.chair[--chair.chair] - chair // Subtraction
+                    : chair.chair[--chair.chair] + chair // Addition
+                : chair.chair ++ && "chair", // chair
+            chair.chair[chair.chair] = chair, chair(),
+            console.log({ first_registers: chair.chair.slice(1,4), opcode: chair, data: chair.chair.slice(111)})) 
+            : chair 
         );
 
-    return chicken.Chicken
+    return chair.chair
 }
 
-// 99 chickens program for testing
+// 99 chairs program for testing
 /*
-console.log(chicken('asdf', `chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+console.log(chair('asdf', `chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair
+chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair
+chair chair chair chair chair chair chair chair chair
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken
-chicken
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair
+chair
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair
+chair chair chair chair chair chair chair chair chair
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair
 `));
 */
 
-console.log(chicken('iissiso', `chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken
-chicken
-chicken chicken
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+console.log(chair('iissiso', `chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
+chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair
+chair
+chair chair
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair
+chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken
-chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken
-chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair
+chair
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
+chair chair chair chair
+chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken
-chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken
-chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair
+chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
+chair chair chair chair
+chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
+chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken
-chicken
-chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair
+chair
+chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken
-chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair
+chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair
 
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair
 
-chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken chicken
-chicken chicken chicken chicken chicken chicken chicken chicken`));
+chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair
+chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair chair
+chair chair chair
+chair chair chair chair chair chair chair chair`));
