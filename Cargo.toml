@@ -1,8 +1,8 @@
 [package]
-name = "chicken_esolang"
+name = "chair_esolang"
 version = "0.1.2"
-authors = ["Alexander Michaud email@alexandermichaud.tech"]
-description = "An interpreter for the esolang Chicken"
+authors = ["me"]
+description = "An interpreter for the esolang Chair"
 edition = "2021"
 license = "MIT"
 license-file = "LICENSE"
