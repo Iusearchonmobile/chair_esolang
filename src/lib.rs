@@ -113,16 +113,16 @@ impl Sub for Token {
     }
 }
 
-pub struct Chicken {
+pub struct chair {
     stack: Vec<Token>,
     data_stack_index: usize,
     debug: bool,
     backwards_compatible: bool
 }
 
-impl Chicken {
+impl chair {
     // Constructor
-    pub fn new(code: String, user_input: &str, debug: bool, backwards_compatible: bool) -> Chicken {
+    pub fn new(code: String, user_input: &str, debug: bool, backwards_compatible: bool) -> chair {
         let input = if let Ok(num) = user_input.parse::<i64>() {
             if num >= 0 {
                 Token::Num(num)
@@ -132,22 +132,22 @@ impl Chicken {
         } else {
             Token::Chars(String::from(user_input))
         };
-        let mut program = Chicken {
+        let mut program = chair {
             stack: Vec::from([Token::Num(2), input]),
             data_stack_index: 2,
             debug,
             backwards_compatible
         };
         for (line_number, line) in code.split("\n").collect::<Vec<&str>>().iter().enumerate() {
-            let mut chicken_count = 0;
+            let mut chair_count = 0;
             for symbol in line.split(" ") {
                 match symbol {
-                    "chicken" => { chicken_count += 1 },
+                    "chair" => { chair_count += 1 },
                     "" => {},
                     _ => panic!("Invalid instruction '{}', line number {}", symbol, line_number)
                 }
             }
-            program.stack.push(Token::Num(chicken_count));
+            program.stack.push(Token::Num(chair_count));
         }
         program.stack.push(Token::Num(0));
         program.data_stack_index = program.stack.len();
@@ -179,7 +179,7 @@ impl Chicken {
     fn execute(&mut self, n: i64) {
         match n {
          // 0 => The EXIT OP is effectively implemented in the program's main loop above.
-            1 => self.chicken(),
+            1 => self.chair(),
             2 => self.add(),
             3 => self.sub(),
             4 => self.mul(),
@@ -238,8 +238,8 @@ impl Chicken {
     }
 
     // OPs
-    fn chicken(&mut self) {
-        self.stack.push(Token::Chars(String::from("chicken")));
+    fn chair(&mut self) {
+        self.stack.push(Token::Chars(String::from("chair")));
     }
 
     fn add(&mut self) {
@@ -379,25 +379,25 @@ mod tests {
 
         #[rstest]
         fn default(code: String) {     
-            let mut program = Chicken::new(code, "", false, false);
+            let mut program = chair::new(code, "", false, false);
             assert_eq!(program.run(), "Hello world");
         }
 
         #[rstest]
         fn bc(code: String) {     
-            let mut program = Chicken::new(code, "", false, true);
+            let mut program = chair::new(code, "", false, true);
             assert_eq!(program.run(), "&#72;&#101;&#108;&#108;&#111;&#32;&#119;&#111;&#114;&#108;&#100;");
         }
         
         #[rstest]
         fn throw_away_input(code: String) {     
-            let mut program = Chicken::new(code, "asdf", false, false);
+            let mut program = chair::new(code, "asdf", false, false);
             assert_eq!(program.run(), "Hello world");
         }
 
         #[rstest]
         fn bc_with_input(code: String) {     
-            let mut program = Chicken::new(code, "asdf", false, true);
+            let mut program = chair::new(code, "asdf", false, true);
             assert_eq!(program.run(), "&#72;&#101;&#108;&#108;&#111;&#32;&#119;&#111;&#114;&#108;&#100;");
         }
     }
@@ -412,53 +412,53 @@ mod tests {
 
         #[rstest]
         fn no_input(code: String) {     
-            let mut program = Chicken::new(code, "", false, false);
+            let mut program = chair::new(code, "", false, false);
             assert_eq!(program.run(), "");
         }
 
         #[rstest]
         fn with_string(code: String) {     
-            let mut program = Chicken::new(code, "asdf", false, false);
+            let mut program = chair::new(code, "asdf", false, false);
             assert_eq!(program.run(), "asdf");
         }
 
         #[rstest]
         fn bc(code: String) {     
-            let mut program = Chicken::new(code, "", false, true);
+            let mut program = chair::new(code, "", false, true);
             assert_eq!(program.run(), "");
         }
 
         #[rstest]
         fn bc_with_string(code: String) {     
-            let mut program = Chicken::new(code, "asdf", false, true);
+            let mut program = chair::new(code, "asdf", false, true);
             assert_eq!(program.run(), "asdf");
         }
     }
 
-    mod ninety_nine_chickens {
+    mod ninety_nine_chairs {
         use super::*;
 
         #[fixture]
         fn code () -> String {
-            std::fs::read_to_string("examples/legacy/99_chickens.chn").expect("Error reading file")
+            std::fs::read_to_string("examples/legacy/99_chairs.chn").expect("Error reading file")
         }
 
         #[rstest]
         fn no_input(code: String) {     
-            let mut program = Chicken::new(code, "", false, true);
-            assert_eq!(program.run(), "n&#111;&#32;chicken&#115;&#10;");
+            let mut program = chair::new(code, "", false, true);
+            assert_eq!(program.run(), "n&#111;&#32;chair&#115;&#10;");
         }
 
         #[rstest]
         fn with_string(code: String) {     
-            let mut program = Chicken::new(code, "asdf", false, true);
-            assert_eq!(program.run(), "asdf&#32;chicken&#115;&#10;1&#32;chicken&#10;n&#111;&#32;chicken&#115;&#10;");
+            let mut program = chair::new(code, "asdf", false, true);
+            assert_eq!(program.run(), "asdf&#32;chair&#115;&#10;1&#32;chair&#10;n&#111;&#32;chair&#115;&#10;");
         }
 
         #[rstest]
         fn with_numbers(code: String) {     
-            let mut program = Chicken::new(code, "4", false, true);
-            assert_eq!(program.run(), "4&#32;chicken&#115;&#10;3&#32;chicken&#115;&#10;2&#32;chicken&#115;&#10;1&#32;chicken&#10;n&#111;&#32;chicken&#115;&#10;");
+            let mut program = chair::new(code, "4", false, true);
+            assert_eq!(program.run(), "4&#32;chair&#115;&#10;3&#32;chair&#115;&#10;2&#32;chair&#115;&#10;1&#32;chair&#10;n&#111;&#32;chair&#115;&#10;");
         }
     }
 
@@ -472,37 +472,37 @@ mod tests {
 
         #[rstest]   
         fn no_input(code: String) {
-            let mut program = Chicken::new(code, "", false, true);
+            let mut program = chair::new(code, "", false, true);
             assert_eq!(program.run(), "&#32;");
         }
 
         #[rstest]
         fn iissiso(code: String) {
-            let mut program = Chicken::new(code, "iissiso", false, true);
+            let mut program = chair::new(code, "iissiso", false, true);
             assert_eq!(program.run(), "&#32;289&#32;");
         }
 
         #[rstest]
         fn diissisdo(code: String) {
-            let mut program = Chicken::new(code, "diissisdo", false, true);
+            let mut program = chair::new(code, "diissisdo", false, true);
             assert_eq!(program.run(), "&#32;288&#32;");
         }
 
         #[rstest]
         fn two_fifty_five_eq_zero(code: String) {
-            let mut program = Chicken::new(code, "iissso", false, true);
+            let mut program = chair::new(code, "iissso", false, true);
             assert_eq!(program.run(), "&#32;0&#32;");
         }
 
         #[rstest]
         fn decrement_to_255(code: String) {
-            let mut program = Chicken::new(code, "iissisdddddddddddddddddddddddddddddddddo", false, true);
+            let mut program = chair::new(code, "iissisdddddddddddddddddddddddddddddddddo", false, true);
             assert_eq!(program.run(), "&#32;0&#32;");
         }
 
         #[rstest]
         fn hello_world_ascii(code: String) {
-            let mut program = Chicken::new(code, "iiisdsiiiiiiiioiiiiiiiiiiiiiiiiiiiiiiiiiiiiioiiiiiiiooiiiodddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddoddddddddddddodddddddddddddddddddddsddoddddddddoiiioddddddoddddddddodddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddo", false, true);
+            let mut program = chair::new(code, "iiisdsiiiiiiiioiiiiiiiiiiiiiiiiiiiiiiiiiiiiioiiiiiiiooiiiodddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddoddddddddddddodddddddddddddddddddddsddoddddddddoiiioddddddoddddddddodddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddo", false, true);
             assert_eq!(program.run(), "&#32;72&#32;101&#32;108&#32;108&#32;111&#32;44&#32;32&#32;119&#32;111&#32;114&#32;108&#32;100&#32;33&#32;");
         }
     }
@@ -517,19 +517,19 @@ mod tests {
 
         #[rstest]
         fn no_input(code: String) {     
-            let mut program = Chicken::new(code, "", false, false);
+            let mut program = chair::new(code, "", false, false);
             assert_eq!(program.run(), "");
         }
 
         #[rstest]
         fn with_string(code: String) {     
-            let mut program = Chicken::new(code, "asdf", false, false);
+            let mut program = chair::new(code, "asdf", false, false);
             assert_eq!(program.run(), "fdsa");
         }
 
         #[rstest]
         fn with_numbers(code: String) {     
-            let mut program = Chicken::new(code, "1234", false, false);
+            let mut program = chair::new(code, "1234", false, false);
             assert_eq!(program.run(), "4321");
         }
     }
